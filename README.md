@@ -1,13 +1,12 @@
 # rentDamnIt
 
 
-###©»|£àO¡ä|©¿
-###½ñÌì±ÏÒµÒ»ÄêÁË£¬½á¹û¹¤×ÊÈ«½»ÁË·¿×â 
-
-###/(¨Òo¨Ò)/~~
-###ÊÇÊ±ºòÁË½âÏÂÄÏ¾©µÄ·¿×âÁË~
+## 2017/06/16
 
 
+### ä»Šå¤©æ¯•ä¸šä¸€å¹´äº†ï¼Œç»“æœå·¥èµ„å…¨äº¤äº†æˆ¿ç§Ÿ  â”—|ï½€Oâ€²|â”› 
+
+### æ˜¯æ—¶å€™äº†è§£ä¸‹å—äº¬æˆ¿ç§Ÿçš„å¤§è‡´æƒ…å†µäº†~  /(ã„’oã„’)/~~ 
 
 ####2017/6/23
 
@@ -21,25 +20,29 @@
 7.É¸Ñ¡Æ÷
 
 
-####webpackÑ§Ï°
+<br>
+<br>
+<br>
 
-1.´´½¨¸öÎÄ¼ş¼Ğ£¬³õÊ¼»¯Ò»ÏÂ£¬Ê×ÏÈÈ«¾Ö°²×°webpack
+### webpackå­¦ä¹ 
+
+1.åˆ›å»ºä¸ªæ–‡ä»¶å¤¹ï¼Œåˆå§‹åŒ–ä¸€ä¸‹ï¼Œé¦–å…ˆå…¨å±€å®‰è£…webpack
 npm install webpack --save-dev
 
 
-2.È»ºó°²×°babel
+2.ç„¶åå®‰è£…babel
 npm install --save-dev babel-core babel-preset-es2015  
 npm install --save-dev babel-loader
 
 
-3.ÔÚsrcÎÄ¼ş¼ĞÄÚ´´½¨Ò»¸öÎÄ¼şapp.js£¬ÀïÃæĞ´ÈëÏÖÔÚä¯ÀÀÆ÷²»È«Ö§³ÖµÄes6´úÂë
+3.åœ¨srcæ–‡ä»¶å¤¹å†…åˆ›å»ºä¸€ä¸ªæ–‡ä»¶app.jsï¼Œé‡Œé¢å†™å…¥ç°åœ¨æµè§ˆå™¨ä¸å…¨æ”¯æŒçš„es6ä»£ç 
 let a = 111;  
 let b = 222;  
 var xxx = (c,d) => c*d;  
 console.log(xxx(a,b));
 
 
-4.È»ºóÔÚ¸ùÄ¿Â¼´´½¨Ò»¸öÎÄ¼şÃûÎªwebpack.config.js 
+4.ç„¶ååœ¨æ ¹ç›®å½•åˆ›å»ºä¸€ä¸ªæ–‡ä»¶åä¸ºwebpack.config.js 
     module.exports = {  
         entry: './src/app.js',  
         output: {  
@@ -56,17 +59,17 @@ console.log(xxx(a,b));
     }  
 
 
-5.È»ºóÔÙ´´½¨Ò»¸öÓÃÓÚbabelµ÷ÓÃµÄÎÄ¼ş£¬ÃûÎª.babelrc
+5.ç„¶åå†åˆ›å»ºä¸€ä¸ªç”¨äºbabelè°ƒç”¨çš„æ–‡ä»¶ï¼Œåä¸º.babelrc
     { "presets": [ "es2015" ] }  
 
 
-6.ÃüÁîĞĞÖĞÔËĞĞ ./node_modules/.bin/webpack --config webpack.config.js 
+6.å‘½ä»¤è¡Œä¸­è¿è¡Œ ./node_modules/.bin/webpack --config webpack.config.js 
 
 
-6.1µ÷Õû package.json
+6.1è°ƒæ•´ package.json
 "scripts": {
     "build": "webpack"
   },
 
 
-6.2ÏÖÔÚÄã¿ÉÒÔÍ¨¹ıÊ¹ÓÃ npm run build ÃüÁîÀ´ÊµÏÖÓëÉÏÃæÏàÍ¬µÄĞ§¹û
+6.2ç°åœ¨ä½ å¯ä»¥é€šè¿‡ä½¿ç”¨ npm run build å‘½ä»¤æ¥å®ç°ä¸ä¸Šé¢ç›¸åŒçš„æ•ˆæœ
