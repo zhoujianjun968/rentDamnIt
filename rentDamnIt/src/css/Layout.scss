@@ -1,0 +1,73 @@
+@import 'Base';
+html,body,#app{
+	height: 100%;
+	width: 100%;
+	min-width: 1200px;
+}
+
+
+.header{
+	min-width:1200px;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	height: $header-height;
+	width: 100%;
+	background-color: $header-bgc;
+	.logo{
+		height: $header-height;
+		width: $logo-width;
+		background: $header-bgc;
+		float: left;
+	}
+	.nav{
+		height: $header-height;
+		float: left;
+	}
+}
+
+
+
+.article{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	min-width:1200px;
+	box-sizing: border-box;
+	border-top: $header-height solid #fff;
+	border-bottom: $footer-height solid #fff;
+	#seciton{
+		height:100%;
+		margin-right: 200px;
+		background-color: red;
+	}
+	.sidebar{
+		height:100%;
+		float: right;
+		width: 200px;
+		background-color: blue;
+	}
+}
+
+
+
+
+.footer{
+	position: absolute;
+	bottom: 0;
+	z-index: 1;
+	width:100%;
+	box-sizing:border-box;
+	background-color: $header-bgc;
+	border: 0;
+	border-top:2px solid #111;
+	line-height: $footer-height;
+	color: #fff;
+	padding-left: 100px;
+
+	min-width:1200px;
+}	
+
+
+

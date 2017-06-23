@@ -1,0 +1,152 @@
+@import 'Base';
+.normal{
+	&-c{
+		cursor:auto !important;
+	}
+	&-fs{
+		font-style:normal !important;
+	}
+	&-p{
+		padding: 0 !important;
+	}
+	&-m{
+		margin: 0!important;
+	}
+	&-bs{
+		box-shadow: 0px 0px 0px rgba(0,0,0,0) !important;
+	}
+}
+
+.danger{
+	color:#fff;
+	background-color: #FF4500;
+}
+.error{
+	border-radius:3px !important;
+	border:1px solid #ff969e  !important;
+}
+
+.long{
+	box-sizing:border-box;
+	width:150%;
+}
+
+.full{
+	box-sizing:border-box;
+	width:100%;
+}
+
+.per75{
+	box-sizing:border-box;
+	width:75%;
+}
+
+.half{
+	box-sizing:border-box;
+	width:50%;
+}
+
+.quarter{
+	box-sizing:border-box;
+	width:25%;
+}
+
+
+
+
+.lt{
+	float:left !important;
+}
+
+.rt{
+	float:right !important;
+	right:0 !important;
+}
+
+.hide{
+	display:none !important;
+}
+
+.show{
+	display:block !important;
+}
+
+.lightheight{
+	&:hover{
+		background-color:$base-bg-highlight-color;
+	}
+}
+
+
+
+
+.oy-a{
+	overflow: auto !important;
+}
+
+.o-h{
+	overflow: hidden !important;
+}
+
+.d-b{
+	display: block;
+}
+.d-i{
+	display: inline;
+} 
+.d-ib{
+	display: inline-block;
+}
+.d-n{
+	display: none;
+}
+
+.h-a{
+	height: auto !important;
+}
+.ta-c{
+	text-align:center !important;
+}
+.ta-l{
+	text-align:left !important;
+}
+
+.p-a{
+	position: absolute !important;
+	&.b{
+		bottom:0 !important;
+	}
+}
+
+.p-r{
+	position: relative !important;
+}
+
+.va-m{
+	vertical-align: middle !important;
+}
+
+.b-s{
+	box-shadow: 0 2px 4px rgba(238, 59, 74, 0.1);
+}
+
+.c-p{
+	cursor:pointer !important;
+}
+
+.mr-40{
+	margin-right:40px;
+}
+
+.ml-40{
+	margin-left:40px;
+}
+.ml-20{
+	margin-left:20px;
+}
+.mb-5{
+	margin-bottom:5px;
+}
+.mt-20{
+	margin-top:20px;
+}

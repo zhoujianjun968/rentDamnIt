@@ -9,13 +9,145 @@
 
 	<meta content="南京的房租" name="description">
 	<meta content="南京，房租" name="keywords">
-	<meta name="renderer" content="webkit">
 	
-	<script src="./dist/bundle.js"></script>
-	
+	<!-- <script src="./dist/bundle.js"></script> -->
+	<link rel="stylesheet" href="./src/css/font-awesome.css">
+	<link rel="stylesheet" href="./src/css/Rely.css">
+
+
+	<link rel="stylesheet" href="./src/css/Layout.css">
+	<link rel="stylesheet" href="./src/css/Module.css">
+
+	<link rel="stylesheet" href="./src/css/State.css">
+	<link rel="stylesheet" href="./src/css/class.css">
+
+
+	<script src = "http://api.map.baidu.com/api?v=2.0&ak=TzIsAOpl5L9WZoRQVarbLP6ZOXvABpOS"></script>
+
 	</head>
 	<body>
-		<div id="app"></div>
-		<!-- built files will be auto injected -->
+		<div id="app">
+			<div class="header">
+				<div class="logo">
+					<a id="logo">可恶的租金</a>
+				</div>
+				<div class="nav">
+					<ul id="nav">
+						<li>
+							<a class="active">首页</a>
+						</li>
+						<li>
+							<a>列表</a>
+						</li>
+						<li>
+							<a>瞎写</a>
+						</li>
+					</ul>
+				</div>
+				<div id="search">
+					<input type="text" placeholder="搜索地区"><i class="fa fa-search"></i>
+				</div>
+			</div>
+			<div class="article">
+				<div class="sidebar">
+					<h1>筛选</h1>
+				</div>
+				<div id="seciton">
+					区域
+				</div>
+			</div>
+			<div class="footer">
+				嘀~~~~~ 来自刚毕业一年的大学生的怨念~ /(ㄒoㄒ)/~~
+			</div>
+		</div>
+
+		<!-- 导入常用js -->
+		<script src="./src/js/common.js"></script>
+		<!-- 导入自定义标注 -->
+		<script src="./src/js/pointOverlay.js"></script>
+		<!-- 导入自定义标注详情 -->
+		<script src="./src/js/info.js"></script>
+
+		<!-- 导入数据 -->
+		<script src="./src/data/data.js"></script>
+
+		<script type="text/javascript"> 
+			// 创建地图实例 
+			var map = new BMap.Map("seciton",{enableMapClick: false, minZoom:16});    
+			// 设置颜色
+			map.setMapStyle({style:'grayscale'})
+			// 创建点坐标           
+			var point = new BMap.Point(118.778,32.057); 
+			// 初始化地图，设置中心点坐标和地图级别 
+			map.centerAndZoom(point, 16)    
+			// 设置鼠标滚轮缩放
+			map.enableScrollWheelZoom()
+			// 禁用双击放大事件
+			map.disableDoubleClickZoom()
+			// 地图平移缩放控件         
+			map.addControl(new BMap.NavigationControl());
+			// 比例尺控件 
+			map.addControl(new BMap.ScaleControl());  
+			// 缩略地图控件        
+			// map.addControl(new BMap.OverviewMapControl());
+			// 设置城市信息
+			map.setCurrentCity("南京");
+			// 地图类型控件 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+			// map.addControl(new BMap.MapTypeControl());
+
+
+			// 标注  
+			// var marker = new BMap.Marker(point);        // 创建标注    
+			// map.addOverlay(marker);                     // 将标注添加到地图
+			// 点击事件
+			// map.addEventListener("click", function(e){    
+			//  	alert("您点击了地图。")
+			//  	console.dir(e)   
+			// });
+
+
+			// 地理编码
+			var myGeo = new BMap.Geocoder();      
+			// 将地址解析结果显示在地图上，并调整地图视野 
+			// myGeo.getPoint("云龙山路80号", function(point){
+			// 	if (point) {
+			// 		let myPointOverlay = new PointOverlay(point)
+			// 		map.addOverlay(myPointOverlay);    
+			// 		myPointOverlay.setInfo(['煦风','2室1厅','82平','1800元','建业','中层(高层)','2013年','塔楼','距中胜地铁站100米','18人次','精装房',[{
+			// 				'src':'./src/img/1.jpg',
+			// 				'detail':'卧室'
+			// 			},{
+			// 				'src':'./src/img/2.png',
+			// 				'detail':'餐厅'
+			// 			}]])
+			// 	}
+			// }, "南京市");
+
+
+			// 创建自定义标注详情
+			var info = new Info()
+
+			// 点击容器
+			var previousClick = null
+
+			// 设置标注
+			function setPoint(address,value){
+				myGeo.getPoint(address, function(point){
+				if (point) {
+					let myPointOverlay = new PointOverlay(point)
+					map.addOverlay(myPointOverlay);    
+					myPointOverlay.setInfo(value)
+					}
+				}, "南京市");
+			}
+
+			for( item of data){
+				let a = item[1]
+				let v = [item[1],item[2],item[3],item[4],item[5],item[6],item[7],item[8],item[9],item[11],item[12],'']
+				setPoint(a,v)
+			}
+
+
+		</script> 
 	</body>
 </html>

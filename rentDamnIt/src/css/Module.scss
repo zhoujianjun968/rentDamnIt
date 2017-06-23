@@ -1,0 +1,73 @@
+﻿@import 'Base';
+
+// logo组件
+#logo{
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: url("../img/logo.png") no-repeat center center;
+	text-indent: -99em;
+}
+
+// 导航组件
+$active-space: 3px;
+#nav{
+	padding-left: 50px;
+	height: $header-height;
+	li{
+		float: left;
+		width: 60px;
+		height: $header-height;
+		text-align: center;
+		margin: 0 16px;
+		a{
+			display: block;
+			font-size: 18px;
+			color: $base-inactive-color;
+			line-height: $header-height - $active-space;
+			cursor: pointer;
+			&:hover{
+				color: #fff;
+				border-bottom: $active-space solid $base-highlight-color;
+			}
+		}
+		a.active{
+			color: #fff;
+			border-bottom: $active-space solid $base-highlight-color;
+		}
+	}
+}
+
+// 搜索组件
+#search{
+	height: $header-height;
+	float: right;
+	margin-right: 200px;
+	input{
+		height: 18px;
+		line-height: 20px;
+		float: left;
+		font-size: 14px;
+		padding: 5px 8px 5px 10px;
+		margin: 15px 0;
+		border: 1px solid #555;
+		width: 200px;
+		background: #333;
+		color: #fff;
+		&::placeholder{
+			color: #b1b1b1;
+		}
+	}
+	i{
+		font-size: 14px;
+		color: #fff;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		margin-top: 15px;
+		margin-left: -30px;
+		cursor: pointer;
+	}
+}

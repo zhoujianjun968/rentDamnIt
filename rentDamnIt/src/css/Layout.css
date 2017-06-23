@@ -1,0 +1,56 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  min-width: 1200px; }
+
+.header {
+  min-width: 1200px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 60px;
+  width: 100%;
+  background-color: #333; }
+  .header .logo {
+    height: 60px;
+    width: 260px;
+    background: #333;
+    float: left; }
+  .header .nav {
+    height: 60px;
+    float: left; }
+
+.article {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  min-width: 1200px;
+  box-sizing: border-box;
+  border-top: 60px solid #fff;
+  border-bottom: 30px solid #fff; }
+  .article #seciton {
+    height: 100%;
+    margin-right: 200px;
+    background-color: red; }
+  .article .sidebar {
+    height: 100%;
+    float: right;
+    width: 200px;
+    background-color: blue; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #333;
+  border: 0;
+  border-top: 2px solid #111;
+  line-height: 30px;
+  color: #fff;
+  padding-left: 100px;
+  min-width: 1200px; }
+
+/*# sourceMappingURL=Layout.css.map */
