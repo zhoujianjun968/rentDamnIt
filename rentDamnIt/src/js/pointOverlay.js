@@ -25,7 +25,7 @@ PointOverlay.prototype.initialize = function(map){
 	    margin:0;
 	    padding:8px;
 	    height:40px;
-	    width:120px;
+	    width:130px;
 	    background-color:#ee3b4a;
 	    border-radius:5px;
 	    text-algin:center;
@@ -99,10 +99,12 @@ PointOverlay.prototype.initialize = function(map){
 			}
 		}
 	}.bind(this))
+
 	div.addEventListener('mouseenter',function(e){
 		// 提高z-index
 		div.style.zIndex = '2'
 	}.bind(this))
+	
 	div.addEventListener('mouseleave',function(e){
 		// 降低z-index
 		if(this._isInfoShow){
@@ -110,9 +112,7 @@ PointOverlay.prototype.initialize = function(map){
 		}else{
 			div.style.zIndex ='auto'
 		}
-		
 	}.bind(this))
-
 
 	// 将div添加到覆盖物容器中   
 	map.getPanes().markerPane.appendChild(div);      
@@ -142,19 +142,22 @@ PointOverlay.prototype.setSize = function(value){
 PointOverlay.prototype.setPrice = function(value){
 	this.price.innerText = value
 }
-// PointOverlay.prototype.setValue = function(values){
-// 	this.title.innerText = values[0]
-// 	this.room.innerText = values[1]
-// 	this.size.innerText = values[2]
-// 	this.price.innerText = values[3]
-// }
 PointOverlay.prototype.setInfo = function(values){
-	this.title.innerText = values[0]
-	this.room.innerText = values[1]
-	this.size.innerText = values[2]
-	this.price.innerText = values[3]
+	let l = values.length
 	this.values = values
+	if(l == 1){
+		this.title.innerText = values[0][0]
+		this.room.innerText = values[0][1]
+		this.size.innerText = values[0][2]
+		this.price.innerText = values[0][3]
+	}else{
+		this.title.innerText = values[0][0]
+		this.room.innerText = `共有${l}套房屋出租`
+	}
 }
+
+
+
 
 
 // myGeo.getPoint("云龙山路88号", function(point){      

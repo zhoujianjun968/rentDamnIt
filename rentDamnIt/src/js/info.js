@@ -1,5 +1,7 @@
 ﻿var Info = function(){
     let picNow = 0
+    let vlauesNow = []
+    let valuesIndex = 0
     function newElem(name,describe){
         
         this.wrap = document.createElement('div')
@@ -119,6 +121,57 @@
                 bottom: -8px;
             `
 
+            this.nextWrap = document.createElement('div')
+            this.nextWrap.style.cssText = `
+                position:absolute;
+                width:20px;
+                height:80px;
+                top: 55px;
+                right:10px;                
+            `
+            this.nextPic = document.createElement('div')
+            this.nextPic.style.cssText = `
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVFhH7ZSvSwNxHIZPYWAQtC04sWgVcTaLwSBzRRAswkSDFtuGKJiMFqvYDCoYDBaDaDIb/FUEwSIiGkzCwvl87t4/YEHeIPfAw93eC8/3NlhSUNApaZqu4Sn2aPoTunXthCGcx4PskxvefACPMNjW7IXwOF7iN65q9kJ4Bu/wGec0eyHcwHe8wUnNXgi3MDjDEc0+iHbhbpwA9rFPj3wQLeNhnAB2NHshPIoX+IPrmr0QnsZbfMUFzV4IT2Eb33BYsxfC5xgsavJBdCNvpyc4qNkDwSX8wGuc0OyBYA3v8RFnNXsgWMUr/MRlzR4IVvAYg03NHgiWcC9L59eSHnkguJWl82+gotkDwRX8wvjtq5o9EKzjEz5gTbMHgv34gvF3W9fsg+gYBk1Nfoj36rbgv5Akv426Rd3wptJAAAAAAElFTkSuQmCC") no-repeat center center;
+                width:20px;
+                height:40px;
+                margin-left: 5px;
+                margin-top: 16px;
+            `
+            this.nextS = document.createElement('div')
+            this.nextS.innerText = '1'
+            this.nextS.style.cssText = `
+                width: 13px;
+                line-height:20px;
+                text-align:right;
+            `
+            this.nextL = document.createElement('div')
+            this.nextL.style.cssText = `
+                width: 28px;
+                height:1px;
+                background:#fff;
+                transform:rotate(-60deg);
+                text-align:center;
+            `
+            this.nextE = document.createElement('div')
+            this.nextE.innerText = ''
+            this.nextE.style.cssText = `
+                width: 23px;
+                line-height:20px;
+                text-align:right;
+            `
+            this.nextPic.addEventListener('click',function(e){
+                picNow = 0
+                valuesIndex = (valuesIndex + 1) % vlauesNow.length
+                this.nextS.innerText = valuesIndex + 1
+                this.setInfo(valuesIndex)
+                this.setPicImg()
+            }.bind(this))
+
+            this.nextWrap.appendChild(this.nextS)
+            this.nextWrap.appendChild(this.nextL)
+            this.nextWrap.appendChild(this.nextE)
+            this.nextWrap.appendChild(this.nextPic)
+
             this.wrap.appendChild(this.place.getElement())
             this.wrap.appendChild(this.room.getElement())
             this.wrap.appendChild(this.size.getElement())
@@ -133,6 +186,7 @@
             this.wrap.appendChild(this.picBn)
             this.wrap.appendChild(this.shopBn)
             this.wrap.appendChild(this.trigon)
+            this.wrap.appendChild(this.nextWrap)
 
             //图片组件
             this.picWrap = document.createElement('div')
@@ -232,7 +286,6 @@
                     this.picWrap.style.display = 'none'
                 }else{
                     this.isPicShow =1
-
                     this.picWrap.style.display = 'block'
                 }
             }.bind(this))
@@ -245,7 +298,6 @@
             this.picRight.addEventListener('click',function(e){
                 picNow = (picNow + 1) % this.picInfo.length
                 this.setPicImg()
-                
             }.bind(this))
         },
         getElement(){
@@ -329,24 +381,35 @@
         setDescribe(value){
             this.describe.setDescribe(value)
         },
+        setInfo(index){
+            this.place.setDescribe(vlauesNow[index][0])
+            this.room.setDescribe(vlauesNow[index][1])
+            this.size.setDescribe(vlauesNow[index][2])
+            this.price.setDescribe(vlauesNow[index][3])
+            this.area.setDescribe(vlauesNow[index][4])
+            this.floor.setDescribe(vlauesNow[index][5])
+            this.build.setDescribe(vlauesNow[index][6])
+            this.type.setDescribe(vlauesNow[index][7])
+            this.subway.setDescribe(vlauesNow[index][8])
+            this.visitor.setDescribe(vlauesNow[index][9])
+            this.describe.setDescribe(vlauesNow[index][10])
+            this.picInfo = vlauesNow[index][11]
+        },
         setValue(values){
-            this.place.setDescribe(values[0])
-            this.room.setDescribe(values[1])
-            this.size.setDescribe(values[2])
-            this.price.setDescribe(values[3])
-            this.area.setDescribe(values[4])
-            this.floor.setDescribe(values[5])
-            this.build.setDescribe(values[6])
-            this.type.setDescribe(values[7])
-            this.subway.setDescribe(values[8])
-            this.visitor.setDescribe(values[9])
-            this.describe.setDescribe(values[10])
-            this.picInfo = values[11]
+            let l = values.length
+            vlauesNow = values
             picNow = 0
+            valuesIndex = 0
+            this.setInfo(valuesIndex)
             this.setPicImg()
+            if(l ==1){
+                this.nextWrap.style.display = 'none'
+            }else{
+                this.nextWrap.style.display = 'block'
+                this.nextE.innerText = l
+            }
         },
         setPicImg(){
-
             if(this.picInfo.length){
                 this.picTitle.innerText = (picNow + 1) +'/' +this.picInfo.length
                 this.picDetail.innerText = this.picInfo[picNow]['detail']
