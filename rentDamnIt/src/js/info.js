@@ -13,12 +13,12 @@
         this.aname.innerText = name+':'
         this.aname.style.cssText = `
             display:inline-block;
-            width:30px;
+            width:32px;
             margin-right:8px;
             font-size:14px;
             line-height:22px;
             font-weight:600;
-            color:#efefef;
+            color:#ee3b4a;
             overflow: hidden;
         `
 
@@ -62,11 +62,12 @@
             this.wrap = document.createElement('div')
             this.wrap.style.cssText = `
                 display:none;
-                background:#ee3b4a;
+                border: 2px solid #ee3b4a;
+                background:#fff;
                 font-size: 14px;
                 line-height: 16px;
-                color: #fff;
-                width: 220px;
+                color: #ee3b4a;
+                width: 216px;
                 white-space: nowrap;
                 border-radius: 2px;
                 box-shadow: 0px 0px 15px0rgba(100, 100, 100, 0.3);
@@ -93,22 +94,30 @@
             this.describe = new newElem('描述','')
 
             this.picBn = document.createElement('div')
+            this.picBn.className = 'fa fa-file-picture-o'
             this.picBn.style.cssText = `
-                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAwklEQVQ4jZ2RoRXCMBCGT1RUIBAIREWGQCA6BAKJ6EYdgQEYAMEAiIqMgGAABkB8iF7eC8mVNvzvRVzy/1/uEhEV0ABu4WokFnCnXD6+GaAt6KDVjBPdGIsRuAa6UFv6yhgAr/U7m3U8r4C9CQC2Ggw6GoA+Ojc76BUyAHUSPiQPmQPUWEsi9b2WAlZAlcw9kMscYacjXAIkmXsaAGyAZ2S4AaeJsAm4/jDPAs6F4Qzwj1x4ZT9rzfUg+qnQScmqREQ+z5QBmTQbapIAAAAASUVORK5CYII=") no-repeat center center;
                 width:20px;
                 height:20px;
+                line-height:20px;
+                font-size:16px;
+                text-align:center;
                 position:absolute;
+                color:#ee3b4a;
                 top:8px;
                 right:6px;
             `
             this.shopBn = document.createElement('div')
+            this.shopBn.className = 'fa fa-shopping-cart'
             this.shopBn.style.cssText = `
-                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAAy0lEQVQ4ja3TIQ7CMBTG8UnE5EIQCBQBh+AOWEgQHAASEi6AZgeYRE6SYBATCAQSgdwVCAkGDoD4I7aFhrx2a8dLnunX/NK85nnAhW9FXt0CQiAGjn9DFTzK0StwduiDhBYvdSkRXNQA1xLYBe6O4Eg3y50DdgOaOnDpACam3+4DD0twowVzdG8JTsrAlQX2BDplYEC2QVU6NGIK6gMtQ94w5b+Xe8ALeANjIW8r+bQKOFdmtBXymZLHVcAAOAEpMBByn2zvU2BYnH8ASXC2wEWVapYAAAAASUVORK5CYII=") no-repeat center center;
                 width:20px;
                 height:20px;
+                line-height:20px;
+                font-size:16px;
+                text-align:center;
                 position:absolute;
+                color:#ee3b4a;
                 bottom:8px;
-                right:8px;
+                right:6px;
             `
             this.trigon = document.createElement('span')
             this.trigon.style.cssText = `
@@ -130,12 +139,16 @@
                 right:10px;                
             `
             this.nextPic = document.createElement('div')
+            this.nextPic.className = 'fa fa-angle-right'
             this.nextPic.style.cssText = `
-                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVFhH7ZSvSwNxHIZPYWAQtC04sWgVcTaLwSBzRRAswkSDFtuGKJiMFqvYDCoYDBaDaDIb/FUEwSIiGkzCwvl87t4/YEHeIPfAw93eC8/3NlhSUNApaZqu4Sn2aPoTunXthCGcx4PskxvefACPMNjW7IXwOF7iN65q9kJ4Bu/wGec0eyHcwHe8wUnNXgi3MDjDEc0+iHbhbpwA9rFPj3wQLeNhnAB2NHshPIoX+IPrmr0QnsZbfMUFzV4IT2Eb33BYsxfC5xgsavJBdCNvpyc4qNkDwSX8wGuc0OyBYA3v8RFnNXsgWMUr/MRlzR4IVvAYg03NHgiWcC9L59eSHnkguJWl82+gotkDwRX8wvjtq5o9EKzjEz5gTbMHgv34gvF3W9fsg+gYBk1Nfoj36rbgv5Akv426Rd3wptJAAAAAAElFTkSuQmCC") no-repeat center center;
                 width:20px;
                 height:40px;
+                font-size: 32px;
                 margin-left: 5px;
                 margin-top: 16px;
+                line-height: 40px;
+                text-align: center;
+
             `
             this.nextS = document.createElement('div')
             this.nextS.innerText = '1'
@@ -148,7 +161,7 @@
             this.nextL.style.cssText = `
                 width: 28px;
                 height:1px;
-                background:#fff;
+                background:#ee3b4a;
                 transform:rotate(-60deg);
                 text-align:center;
             `
@@ -198,15 +211,15 @@
                 line-height: 16px;
                 color: #fff;
                 height:172px;
-                width: 212px;
+                width: 214px;
                 white-space: nowrap;
                 border-radius: 2px;
-                border: 4px solid #ee3b4a;
+                border: 2px solid #ee3b4a;
                 box-shadow: 0px 0px 15px0rgba(100, 100, 100, 0.3);
                 margin: 0px;
                 padding: 8px;
                 position: absolute;
-                top: -210px;
+                top: -208px;
                 left: 0px;
             `
             this.picDetail = document.createElement('span')
@@ -258,7 +271,7 @@
                 border-width:8px 6px 0 6px;
                 border-style:solid;
                 border-color: #ee3b4a transparent transparent;
-                bottom: -12px;
+                bottom: -8px;
             `
             this.picWrap.appendChild(this.picDetail)
             this.picWrap.appendChild(this.picTitle)
@@ -400,6 +413,7 @@
             vlauesNow = values
             picNow = 0
             valuesIndex = 0
+            this.nextS.innerText = 1
             this.setInfo(valuesIndex)
             this.setPicImg()
             if(l ==1){

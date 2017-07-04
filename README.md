@@ -1,75 +1,39 @@
 # rentDamnIt
 
+### 毕业一年了 结果全在交房租 (；′⌒`)
 
-## 2017/06/16
+### 嘀~~~~~ 来自刚毕业一年的大学生的怨念~ /(ㄒoㄒ)/~~ 
 
+### 2017/6/28
+百度的聚合marker的实例 竟然各种报错 ，还是源码在报错。。。(￢︿̫̿￢☆)  只能换个思路了 =。= <br>
+还有个更严重的问题，图片有点多，占了太大空间了 ，而且信息是爬的，没有版权，不能分享了额<br>
+ <br>
+功能: <br>
+1.顶部搜索栏 <br>
+2.根据地图缩放级别显示不同的标注 <br>
+ <br>
+尚未完成: <br>
+1.扒图片 <br>
+2.合并数据 <br>
+3.优化自定义标注 <br>
+4.大数据推荐 <br>
+ <br>
 
-### 今天毕业一年了，结果工资全交了房租  ┗|｀O′|┛ 
+### 2017/6/23
+尚未完成: <br>
+1.爬图片 <br>
+2.全局取消 <br>
+3.合并数据 <br>
+4.顶部搜索栏 <br>
+5.优化自定义标注 <br>
+6.修改样式 <br>
+7.大数据推荐 <br>
+<br>
 
-### 是时候了解下南京房租的大致情况了~  /(ㄒoㄒ)/~~ 
-
-####2017/6/23
-
-��δ���:
-1.��ͼƬ
-2.ȫ��ȡ��
-3.�ϲ�����
-4.����������
-5.�Ż��Զ����ע
-6.�޸���ʽ
-7.ɸѡ��
+### 2017/06/16
+开始~
 
 
 <br>
 <br>
 <br>
-
-### webpack学习
-
-1.创建个文件夹，初始化一下，首先全局安装webpack
-npm install webpack --save-dev
-
-
-2.然后安装babel
-npm install --save-dev babel-core babel-preset-es2015  
-npm install --save-dev babel-loader
-
-
-3.在src文件夹内创建一个文件app.js，里面写入现在浏览器不全支持的es6代码
-let a = 111;  
-let b = 222;  
-var xxx = (c,d) => c*d;  
-console.log(xxx(a,b));
-
-
-4.然后在根目录创建一个文件名为webpack.config.js 
-    module.exports = {  
-        entry: './src/app.js',  
-        output: {  
-            path: './bin',  
-            filename: 'app.bundle.js',  
-        },  
-        module: {  
-            loaders: [{  
-                test: /\.js$/,  
-                exclude: /node_modules/,  
-                loader: 'babel-loader'  
-            }]  
-        }  
-    }  
-
-
-5.然后再创建一个用于babel调用的文件，名为.babelrc
-    { "presets": [ "es2015" ] }  
-
-
-6.命令行中运行 ./node_modules/.bin/webpack --config webpack.config.js 
-
-
-6.1调整 package.json
-"scripts": {
-    "build": "webpack"
-  },
-
-
-6.2现在你可以通过使用 npm run build 命令来实现与上面相同的效果

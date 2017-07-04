@@ -15,7 +15,7 @@ var PointOverlay =  function(point){
 PointOverlay.prototype = new BMap.Overlay();
 // 实现初始化方法  
 PointOverlay.prototype.initialize = function(map){    
-// 保存map对象实例   
+	// 保存map对象实例   
 	this._map = map;        
 	// 创建div元素，作为自定义覆盖物的容器   
 	var div = document.createElement("div");
@@ -28,7 +28,7 @@ PointOverlay.prototype.initialize = function(map){
 	    width:130px;
 	    background-color:#ee3b4a;
 	    border-radius:5px;
-	    text-algin:center;
+	    text-align:center;
 		box-shadow: 0 0 15px rgba(100,100,100,0.5);
 		cursor:pointer;
 	`
@@ -75,6 +75,16 @@ PointOverlay.prototype.initialize = function(map){
 	div.addEventListener('click',function(e){
 		// 设置info信息
 		// 将info
+		e.stopPropagation()
+
+		// 注册观察者事件
+		observer.clear('hide')
+		observer.regist('hide',function(){
+			this._isInfoShow = 0 
+			info.getElement().style.display = 'none'
+		}.bind(this))
+
+
 		div.appendChild(info.getElement())
 		// info.getIsPicShow()
 		if(e.target.className = 'marker'){
@@ -104,7 +114,7 @@ PointOverlay.prototype.initialize = function(map){
 		// 提高z-index
 		div.style.zIndex = '2'
 	}.bind(this))
-	
+
 	div.addEventListener('mouseleave',function(e){
 		// 降低z-index
 		if(this._isInfoShow){
@@ -174,3 +184,168 @@ PointOverlay.prototype.setInfo = function(values){
 // 			}]])
 //     }      
 // }, "南京市");
+// 
+// 
+// 
+// setPoint('新街口',[['烽火','3室2厅','198平','5600元','建业','高层(高层)','2016年','塔楼','距中胜地铁站80米','38人次','精装房',[{
+			// 	'src':'./src/img/1.jpg',
+			// 	'detail':'厨房'
+			// },{
+			// 	'src':'./src/img/2.png',
+			// 	'detail':'书房'
+			// }]],['天泽','1室2厅','128平','5300元','鼓楼','地层(高层)','2015年','塔楼','距中胜地铁站20米','30人次','精装房',[{
+			// 	'src':'./src/img/1.jpg',
+			// 	'detail':'厨房'
+			// }]]])
+			// setPoint('鼓楼',[['烽火','3室2厅','198平','5600元','建业','高层(高层)','2016年','塔楼','距中胜地铁站80米','38人次','精装房',[{
+			// 	'src':'./src/img/1.jpg',
+			// 	'detail':'厨房'
+			// },{
+			// 	'src':'./src/img/2.png',
+			// 	'detail':'书房'
+			// }]]])
+			// 
+			// 
+
+
+
+
+
+
+var PointClusterer = function(point,params){
+	PointOverlay.call(this,point,params['county'])
+	let myBoundary = new BMap.Boundary()
+	let myPointOverlay = new PointOverlay()
+	// this._center = point
+	this._width = 0
+	this._height = 0
+	// this._color  = '#ee3b3a'
+	this._sidebarShow = 0
+	this._notPolygonShow = 1
+
+
+	this.content = null
+	this.contentText = params['data'].length
+	// 区县名
+	this.county = params['county']
+	// 标题
+	this.title = null
+	// 覆盖物
+	this.polygon = null
+	// 行政边界
+	this.boundary = null
+	this.values = null
+	this.getBoundary()
+
+}
+PointClusterer.prototype = new PointOverlay()
+PointClusterer.prototype.initialize =function(map){
+	// 保存map对象实例   
+	this._map = map
+	// 创建div元素，作为自定义覆盖物的容器   
+	let div = document.createElement("div")
+	div.className='marker'
+	div.style.cssText = `
+		position:absolute;
+	    text-align:center;
+		cursor:pointer;
+	`
+	let bgCircle = document.createElement('div')
+	bgCircle.style.cssText = `
+		margin:0;
+	    padding:8px;
+	    width: 16px;
+		height: 0px;
+		background-color:#ee3b4a;
+		border-radius: 88px 88px 0 0px;
+	`
+	let bgArrow = document.createElement('div')
+	bgArrow.style.cssText = `
+  		width: 0px;
+  		height:0px;
+  		border-width: 20px 16px 0;
+  		border-style: solid;
+  		border-color: #ee3b4a transparent transparent transparent;
+	`
+	this.content = document.createElement('div')
+	this.content.innerText = this.contentText
+	this.content.style.cssText = `
+		position: absolute;
+		margin-top: -31px;
+		font-size: 16px;
+		color: #fff;
+		margin-left: 10px;
+		font-weight: 600;
+	`
+
+	div.appendChild(bgCircle)
+	div.appendChild(bgArrow)
+	div.appendChild(this.content)
+
+
+	div.addEventListener('click',function(e){
+		observer.fire('clear')
+		observer.clear('clear')
+
+		sidebarInfo.show()
+
+		bgCircle.style.backgroundColor = '#CC0000'
+		bgArrow.style.borderColor = '#CC0000 transparent transparent transparent'
+
+		if(this._notPolygonShow){
+			this._notPolygonShow = 0
+			map.addOverlay(this.polygon)
+		}else{
+			this.polygon.show()
+		}
+
+		observer.regist('clear',function(){
+			bgCircle.style.backgroundColor = '#ee3b4a'
+			bgArrow.style.borderColor = '#ee3b4a transparent transparent transparent'
+
+			if(!this.polygon){
+				this.getBoundary()
+			}else{
+				this.polygon.hide()
+			}
+
+		}.bind(this))
+
+	}.bind(this))
+
+	div.addEventListener('mouseenter',function(e){
+
+	}.bind(this))
+
+	div.addEventListener('mouseleave',function(e){
+
+	}.bind(this))
+
+
+	// 将div添加到覆盖物容器中   
+	map.getPanes().markerPane.appendChild(div)    
+	// 保存div实例   
+	this._div = div
+	// 需要将div元素作为方法的返回值，当调用该覆盖物的show、   
+	// hide方法，或者对覆盖物进行移除时，API都将操作此元素。   
+	return div;
+}
+PointClusterer.prototype.setInfo = function(values){
+
+}
+PointClusterer.prototype.getBoundary = function(){
+	
+	//获取行政区域
+	myBoundary.get(this.county, function(rs){   
+		//清除地图覆盖物     
+		// map.clearOverlays();       
+		//行政区域的点有多少个      
+		let count = rs.boundaries.length; 
+		//设置覆盖物
+		this.polygon = new BMap.Polygon(rs.boundaries[0], {strokeWeight: 1, 	strokeColor: "#ff0000"}); //								建立多边形覆盖物
+		//添加覆盖物
+		
+		//调整视野
+		// map.setViewport(ply.getPath());             
+	}.bind(this));
+}
